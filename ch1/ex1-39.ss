@@ -1,0 +1,10 @@
+#lang sicp
+(define (tan-cf x k)
+    (define (n i)
+        (- (* i 2) 1))
+    (define (tan-iter i)
+        (cond ((= i 1) (/ x (- 1 (tan-iter 2))))
+              ((= i k) (/ (* x x) (n i)))
+              (else (/ (* x x) (- (n i) (tan-iter (+ i 1)))))))
+    (tan-iter 1)
+)

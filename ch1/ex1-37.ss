@@ -1,0 +1,25 @@
+#lang sicp
+(define (cont-frac n d k)
+    (define (iter-base count)
+        (if (= k count) 
+            (/ (n count) (d count))
+            (/ (n count) (+ (d count) (iter-base (+ count 1))))))
+    (iter-base 1)
+)
+
+(define (cont-frac-recur n d k)
+    (define (recur-base c result)
+        (cond ((= c 0) result)
+              (else (recur-base (- c 1) (/ (n c) (+ (d c) result))))
+            ))
+    (recur-base k 0)
+)
+
+(define (dev k)
+    (let ((convert-phi (/ 2 (+ 1 (sqrt 5)))))
+        (- convert-phi
+           (cont-frac-recur (lambda (i) 1.0)
+                      (lambda (i) 1.0)
+                      k))
+    )
+)
