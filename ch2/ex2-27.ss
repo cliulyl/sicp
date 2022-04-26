@@ -1,0 +1,15 @@
+#lang sicp
+(define (reverse a)
+    (define (recur-base a ret)
+        (cond ((null? a) ret)
+              (else (recur-base (cdr a) (cons (car a) ret)))))
+    (recur-base a nil)
+)
+
+(define (deep-reverse a)
+    (define (recur-base a ret)
+        (cond ((null? a) ret)
+              ((not (pair? (car a))) (recur-base (cdr a) (cons (car a) ret)))
+              (else (recur-base (cdr a) (cons (recur-base (car a) nil) ret)))))
+    (recur-base a nil)
+)
