@@ -1,0 +1,1 @@
+("8.4" ta6osx ("1851fdce622f1194365c44357766e285df90dd15" . "3489db806abbe0f58fc24b88a0e727fcb4a9c052") #"/Users/liuchao/Code/sicp/ch3/ch3support.scm" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

@@ -1,0 +1,26 @@
+#lang sicp
+(define (make-list n val)  ; 构造由n个val组成的list
+    (define (recur-base i ret)
+        (cond ((>= i n) ret)
+              (else (recur-base (+ 1 i) (cons val ret)))))
+    (recur-base 0 '()))
+
+; part b: use test-and-set! (assuming it is atomic)
+(define (make-sema n)
+    (let ((cells (make-list n #f)))
+        (define (test-and-set-cells! items)
+            (cond ((null? items) #t)
+                  ((test-and-set! items) (test-and-set-cells! (cdr items)))
+                  (else #f)))
+        (define (clear! items)
+            (cond ((null? items) (error "Cannot clear: all cells are cleared" cells))
+                  ((car items) (set-car! items false))
+                  (else (clear (cdr items)))))
+        (define (the-sema m)
+            (cond ((eq? m 'acquire)
+                   (if (test-and-set-cells! cells)
+                       (the-sema 'acquire)))  ;retry
+                  ((eq? m 'release)
+                   (clear! cells))))
+        the-sema)
+)

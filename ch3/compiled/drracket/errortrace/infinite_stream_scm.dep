@@ -1,0 +1,1 @@
+("8.4" ta6osx ("031a1f312a6669ea76ae8d8bb7d1ddbc0d2f13e9" . "d4badedc17f4cde86f8446b6590d6a42b0302d67") #"/Users/liuchao/Code/sicp/ch3/stream.scm" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

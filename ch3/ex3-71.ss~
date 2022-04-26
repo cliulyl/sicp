@@ -1,0 +1,40 @@
+#lang racket
+(require "stream.scm")
+(require "infinite_stream.scm")
+(require "stream_iterations.scm") 
+(require "pairs_stream.scm")
+(require "ex3-70.ss")
+
+(define (cube x) (* x x x))
+
+(define (weight-cube-sum x y)
+    (+ (cube x) (cube y)))
+
+(define (cube-sum-of-pair pair)
+    (+ (cube (car pair)) (cube (cadr pair))))
+
+(define all-ordered-pairs
+    (weighted-pairs integers integers weight-cube-sum))
+
+(define (get-Remanujan n)
+    (define (iter-base pairs-stream this-weight n-remain ret)
+        (let ((this-pair (stream-car pairs-stream))
+              (next-pair (stream-car (stream-cdr pairs-stream))))
+            (let ((next-weight (cube-sum-of-pair next-pair)))
+                 (cond ((= n 0) ret)
+                       ((= this-weight next-weight)
+                        (iter-base (stream-cdr pairs-stream)
+                                   next-weight
+                                   (- n-remain 1)
+                                   (append ret (list this-weight))))
+                       (else
+                        (iter-base (stream-cdr pairs-stream)
+                                   next-weight
+                                   n-remain
+                                   ret))))))
+    (iter-base all-ordered-pairs (cube-sum-of-pair (stream-car all-ordered-pairs)) n null))
+
+(module* main #f
+    ; (stream-head->list all-ordered-pairs 100)
+    (get-Remanujan 6)
+)
