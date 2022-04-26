@@ -1,0 +1,1 @@
+("8.4" ta6osx ("b37d3c8e6ccc955de45809e3138b1eeb46ef8a0e" . "1789b5fddffa5a774b95988f8ff21c33b6da0cbc") #"/Users/liuchao/Code/sicp/ch4/ch4support.scm" #"/Users/liuchao/Code/sicp/ch4/mceval.scm" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"sicp" #"lang" #"reader.rkt") (collects #"sicp" #"main.rkt"))
