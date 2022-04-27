@@ -1,3 +1,4 @@
+; ex5.2 in p348
 
 (controller
    (assign product (const 1))
