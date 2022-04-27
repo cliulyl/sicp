@@ -1,3 +1,5 @@
+; ex5.3 in p349
+
 ; assuming good-enough? and improve are available ops
 (controller
    (assign guess (const 1.0))
